@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 
 class DefaultButton extends StatelessWidget {
+  final String text;
+  final Color color;
+  final Color textColor;
+  final EdgeInsetsGeometry margin;
 
-  String text;
-  Color color;
-  Color textColor;
-
-   DefaultButton({
+  const DefaultButton({
+    super.key,
     required this.text,
     this.color = Colors.white,
-    this.textColor = Colors.black
+    this.textColor = Colors.black,
+    this.margin = const EdgeInsets.only(
+      bottom: 20,
+      left: 40,
+      right: 40,
+    ),
   });
 
   @override
@@ -17,15 +23,14 @@ class DefaultButton extends StatelessWidget {
     return Container(
       height: 45,
       width: MediaQuery.of(context).size.width,
-      //alignment: Alignment.center,
-      margin: EdgeInsets.only(bottom: 20, left: 40, right: 40),
+      margin: margin,
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
+          backgroundColor: color,
         ),
         child: Text(
-          'Iniciar sesion',
+          text,
           style: TextStyle(
             color: textColor,
             fontSize: 18,

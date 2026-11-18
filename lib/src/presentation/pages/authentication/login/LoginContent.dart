@@ -30,7 +30,7 @@ class LoginContent extends StatelessWidget {
             children: [
               _textLoginRotated(),
               SizedBox(height: 50),
-              _textRegisterRotated(),
+              _textRegisterRotated(context),
               SizedBox(height: 90),
             ],
           ),
@@ -78,7 +78,7 @@ class LoginContent extends StatelessWidget {
                 ),
                 _separatorOr(),
                 SizedBox(height: 10),
-                _textDontHaveAccount(),
+                _textDontHaveAccount(context),
                 SizedBox(height: 50),
               ],
             ),
@@ -88,7 +88,7 @@ class LoginContent extends StatelessWidget {
     );
   }
 
-  Widget _textDontHaveAccount(){
+  Widget _textDontHaveAccount(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -100,8 +100,11 @@ class LoginContent extends StatelessWidget {
           ),
         ),
         SizedBox(width: 7),
-        TextButton(
-          onPressed: () {},
+          GestureDetector(
+            onTap: () {
+              // Navegar a la página de registro
+              Navigator.pushNamed(context, 'register');
+            },
           child: Text(
             'Registrate',
             style: TextStyle(
@@ -174,14 +177,19 @@ class LoginContent extends StatelessWidget {
     );
   }
 
-  Widget _textRegisterRotated(){
-    return RotatedBox(
-      quarterTurns: 1, // Rotación del texto
-      child: Text(
-        'Registro',
-        style: TextStyle(
-          fontSize: 24,
-          color: Colors.white,
+  Widget _textRegisterRotated(BuildContext context){
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, 'register');
+      },
+      child: RotatedBox(
+        quarterTurns: 1, // Rotación del texto
+        child: Text(
+          'Registro',
+          style: TextStyle(
+            fontSize: 24,
+            color: Colors.white,
+          ),
         ),
       ),
     );
