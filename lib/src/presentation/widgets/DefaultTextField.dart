@@ -26,7 +26,7 @@ class DefaultTextField extends StatelessWidget {
       ),
       child: TextFormField(
         decoration: InputDecoration(
-          label: Text('text'),
+          label: Text(text),
           border: InputBorder.none,
           prefixIcon: Container(
           margin: EdgeInsets.only(top: 10),
