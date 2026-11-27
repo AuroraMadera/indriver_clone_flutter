@@ -10,7 +10,7 @@ class BlocFormItem {
 
   BlocFormItem copyWith({
     String? value,
-    String? error;
+    String? error,
   }) {
     return BlocFormItem(
       value: value ?? this.value,

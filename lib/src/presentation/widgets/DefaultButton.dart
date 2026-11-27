@@ -1,8 +1,9 @@
+
 import 'package:flutter/material.dart';
 
 class DefaultButton extends StatelessWidget {
 
-  Function()onPressed;
+  final Function() onPressed;
   final String text;
   final Color color;
   final Color textColor;
@@ -14,7 +15,11 @@ class DefaultButton extends StatelessWidget {
     required this.onPressed,
     this.color = Colors.white,
     this.textColor = Colors.black,
-    this.margin = const EdgeInsets.only(bottom: 20,left: 40,right: 40)
+    this.margin = const EdgeInsets.only(
+      bottom: 20,
+      left: 40,
+      right: 40,
+    ),
   });
 
   @override

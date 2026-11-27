@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 
 class DefaultTextFieldOutlined extends StatelessWidget {
 
-  String text;
-  IconData icon;
-  EdgeInsetsGeometry? margin;
+  final String text;
+  final Function(String text)? onChanged;
+  final IconData icon;
+  final EdgeInsetsGeometry? margin;
+  final String? Function(String?)? validator;
 
-  DefaultTextFieldOutlined({
-    required this.text, 
+  const DefaultTextFieldOutlined({
+    super.key,
+    required this.text,
     required this.icon,
-    this.margin=const EdgeInsets.only(top: 50,left: 20,right: 20),
+    this.margin = const EdgeInsets.only(top: 50, left: 20, right: 20),
+    this.validator,
+    this.onChanged,
   });
 
   @override
@@ -17,47 +22,58 @@ class DefaultTextFieldOutlined extends StatelessWidget {
     return Container(
       height: 45,
       margin: margin,
-      decoration: BoxDecoration(
-        color: Color.fromARGB(255, 35, 161, 183),
+      decoration: const BoxDecoration(
+        color: Color.fromARGB(70, 20, 90, 180),
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(15),
-          topRight: Radius.circular(15),
+          topLeft: Radius.circular(5),
+          topRight: Radius.circular(5),
         ),
       ),
       child: TextFormField(
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+        ),
+        cursorColor: Colors.white,
+        onChanged: (text) {
+          onChanged?.call(text);
+        },
+        validator: validator,
         decoration: InputDecoration(
           label: Text(
             text,
-            style: TextStyle(
-              color: Colors.white
-            )
-          ),
-          // border: InputBorder.none,
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Color.fromARGB(255,35,161,183), 
-              width: 2
-              )
+            style: const TextStyle(
+              color: Colors.white,
             ),
-            enabledBorder:  OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.blueGrey,
-                width: 2 
-            )
+          ),
+          floatingLabelStyle: const TextStyle(
+            color: Colors.white,
+          ),
+          focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Color.fromARGB(255, 65, 150, 245),
+              width: 2,
+            ),
+          ),
+          enabledBorder: const OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Color.fromARGB(255, 65, 130, 220),
+              width: 1.5,
+            ),
           ),
           prefixIcon: Container(
-          margin: EdgeInsets.only(top: 10),
-          child: Wrap(
-            alignment: WrapAlignment.spaceEvenly,
-            children: [
-              Icon(
-                icon,
-                color: Colors.white,
+            margin: const EdgeInsets.only(top: 10),
+            child: Wrap(
+              alignment: WrapAlignment.spaceEvenly,
+              children: [
+                Icon(
+                  icon,
+                  color: Colors.white,
                 ),
-              Container(
-                height: 20,
-                width: 1,
-                color: Colors.white,
+                Container(
+                  height: 20,
+                  width: 1,
+                  color: Colors.white,
                 ),
               ],
             ),

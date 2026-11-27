@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DefaultTextField extends StatelessWidget {
 
   String text;
-  Function(String text) onChanged;
+  Function(String text)? onChanged;
   IconData icon;
   EdgeInsetsGeometry? margin;
   String? Function(String?)? validator;
@@ -30,7 +30,7 @@ class DefaultTextField extends StatelessWidget {
       ),
       child: TextFormField(
         onChanged: (text){
-          onChanged(text);
+          onChanged?.call(text);
         },
         validator: validator,
         decoration: InputDecoration(
