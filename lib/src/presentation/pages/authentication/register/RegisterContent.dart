@@ -100,7 +100,7 @@ class RegisterContent extends StatelessWidget {
                       ),
 
                       DefaultTextFieldOutlined(
-                        text: 'Telefono',
+                        text: 'Phone',
                         icon: Icons.phone_outlined,
                         margin: const EdgeInsets.only(
                           left: 50,
@@ -130,7 +130,8 @@ class RegisterContent extends StatelessWidget {
                       ),
 
                       DefaultButton(
-                        text: 'Crear Usuario',
+                        onPressed: () {},
+                        text: 'Create Us',
                         margin: const EdgeInsets.only(
                           left: 30,
                           right: 60,
